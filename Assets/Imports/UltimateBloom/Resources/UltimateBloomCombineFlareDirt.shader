@@ -1,4 +1,6 @@
-﻿Shader "Hidden/Ultimate/BloomCombineFlareDirt" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Hidden/Ultimate/BloomCombineFlareDirt" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "black" {}
 		_FlareTexture ("Flare (RGB)", 2D) = "black" {}
@@ -29,7 +31,7 @@ struct v2f
 v2f vert( appdata_img v ) 
 {
 	v2f o;
-	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+	o.pos = UnityObjectToClipPos(v.vertex);
 	o.uv =  v.texcoord.xy;
 	return o;
 } 
@@ -194,7 +196,7 @@ struct v2f
 v2f vert( appdata_img v ) 
 {
 	v2f o;
-	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+	o.pos = UnityObjectToClipPos(v.vertex);
 	o.uv =  v.texcoord.xy;
 	return o;
 } 
